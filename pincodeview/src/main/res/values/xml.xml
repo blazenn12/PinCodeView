@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PinCodeView">
+        <attr name="PCV_buttonBackground" format="reference" />
+        <attr name="PCV_buttonTextColor" format="color" />
+        <attr name="PCV_buttonTintColor" format="color" />
+        <attr name="PCV_clearSrc" format="reference" />
+        <attr name="PCV_clearBackground" format="reference|color" />
+        <attr name="PCV_clearTint" format="color" />
+
+        <attr name="PCV_pinsSrc" format="reference" />
+        <attr name="PCV_pinColor" format="color" />
+
+        <!--
+            Animation on successful event.
+            Default: enabled
+         -->
+        <attr name="PCV_enableSuccessAnimation" format="boolean" />
+
+        <!--
+            Animation on fail event
+            Default: enabled
+         -->
+        <attr name="PCV_enableFailAnimation" format="boolean" />
+    </declare-styleable>
+</resources>

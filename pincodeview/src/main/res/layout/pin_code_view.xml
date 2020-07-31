@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/ll_pins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/b_2"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_pin_1"
+            style="@style/PinView" />
+
+        <ImageView
+            android:id="@+id/iv_pin_2"
+            style="@style/PinView" />
+
+        <ImageView
+            android:id="@+id/iv_pin_3"
+            style="@style/PinView" />
+
+        <ImageView
+            android:id="@+id/iv_pin_4"
+
+            style="@style/PinView" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ib_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/b_3"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toEndOf="@id/ll_pins"
+        android:background="@drawable/circle_button"
+        android:src="@drawable/ic_baseline_close_24"
+        android:tint="@android:color/white" />
+
+
+    <Button
+        android:id="@+id/b_4"
+        style="@style/CircleButton"
+        android:layout_centerInParent="true"
+        android:layout_toStartOf="@id/b_5"
+        android:text="4" />
+
+
+    <Button
+        android:id="@+id/b_5"
+        style="@style/CircleButton"
+        android:layout_centerInParent="true"
+        android:text="5" />
+
+    <Button
+        android:id="@+id/b_6"
+        style="@style/CircleButton"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@id/b_5"
+        android:text="6" />
+
+    <Button
+        android:id="@+id/b_2"
+        style="@style/CircleButton"
+        android:layout_above="@id/b_5"
+        android:layout_centerInParent="true"
+        android:text="2" />
+
+    <Button
+        android:id="@+id/b_1"
+        style="@style/CircleButton"
+        android:layout_above="@id/b_4"
+        android:layout_centerInParent="true"
+        android:layout_toStartOf="@id/b_5"
+        android:text="1" />
+
+    <Button
+        android:id="@+id/b_3"
+        style="@style/CircleButton"
+        android:layout_above="@id/b_6"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@id/b_5"
+        android:text="3" />
+
+    <Button
+        android:id="@+id/b_9"
+        style="@style/CircleButton"
+        android:layout_below="@id/b_6"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@id/b_5"
+        android:text="9" />
+
+    <Button
+        android:id="@+id/b_8"
+        style="@style/CircleButton"
+        android:layout_below="@id/b_5"
+        android:layout_centerInParent="true"
+        android:text="8" />
+
+
+    <Button
+        android:id="@+id/b_7"
+        style="@style/CircleButton"
+        android:layout_below="@id/b_4"
+        android:layout_centerInParent="true"
+        android:layout_toStartOf="@id/b_5"
+        android:text="7" />
+
+
+    <Button
+        android:id="@+id/b_0"
+        style="@style/CircleButton"
+        android:layout_below="@id/b_8"
+        android:layout_centerInParent="true"
+        android:text="0" />
+
+
+</RelativeLayout>
