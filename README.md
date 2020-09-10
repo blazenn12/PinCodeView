@@ -1,7 +1,7 @@
 PincodeView
 ==
 
-A custom view to enter a four digit code without keyboard
+A custom view for Android platform to enter a four digit code without keyboard
 
 ![S1](./media/pincodeview.gif)
 
