@@ -11,5 +11,5 @@ internal interface IPinStore {
 
     fun add(int: Int)
 
-    fun clear()
+    fun clean()
 }

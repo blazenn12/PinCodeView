@@ -1,7 +1,7 @@
 PincodeView
 ==
 
-A custom view for Android platform to enter a four digit code without keyboard
+A custom view for the Android platform to enter a four digit code without keyboard
 
 ![S1](./media/pincodeview.gif)
 
@@ -38,7 +38,7 @@ And get callback:
 ```
 val SECRET_PIN = "1234";
 val pinCodeView: PinCodeView = findViewById(R.id.pincode)
-pinCodeView.onPinCodeEnterListener = this
+pinCodeView.addOnPinCodeEnterListener(this)
 
 
     override fun onPinCodeAttempt(pinCode: String) {
@@ -57,9 +57,9 @@ PincodeVie Attributes
 |PCV_buttonBackground| set backgroud to buttons|
 |PCV_buttonTextColor| set text color to buttons |
 |PCV_buttonTintColor| set button tint color to buttons|
-|PCV_clearSrc| set drawable to clear button|
-|PCV_clearBackground| set background to clear button|
-|PCV_clearTint| set tint to clear button|
+|PCV_cleanSrc| set drawable to clean button|
+|PCV_cleanBackground| set background to clean button|
+|PCV_cleanTint| set tint to clean button|
 |PCV_pinsSrc| set src to all pins|
 |PCV_pinColor| set color to all pins|
 |PCV_enableSuccessAnimation| enable\disable success animation (default: true|

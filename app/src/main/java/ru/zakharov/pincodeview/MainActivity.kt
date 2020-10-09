@@ -13,11 +13,11 @@ class MainActivity : AppCompatActivity(), PinCodeView.OnPinCodeEnterListener {
 
         pinCodeView = findViewById(R.id.pincode)
 
-        pinCodeView.onPinCodeEnterListener = this
+        pinCodeView.addOnPinCodeEnterListener(this)
     }
 
     override fun onPinCodeAttempt(pinCode: String) {
-        when (pinCode.equals("0123")) {
+        when (pinCode == "0123") {
             true -> pinCodeView.onSuccess()
             false -> pinCodeView.onFail()
         }

@@ -99,12 +99,24 @@ class PinStoreTest {
         pinStore.add(1)
         pinStore.add(0)
         pinStore.add(6)
-        pinStore.clear()
+        pinStore.clean()
         pinStore.add(6)
         pinStore.add(3)
         pinStore.add(4)
         pinStore.add(9)
         assertEquals("6349", result)
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun addPin_lessThanMinValue() {
+        pinStore = PinStore(null)
+        pinStore.add(-1)
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun addPin_moreThanMaxValue() {
+        pinStore = PinStore(null)
+        pinStore.add(10)
     }
 
 }

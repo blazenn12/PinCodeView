@@ -53,7 +53,7 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
     private val pinFour: ImageView
     private val pintList: List<ImageView>
 
-    private val clearButton: ImageButton
+    private val cleanButton: ImageButton
 
     private val failAnimation: SpringAnimation
     private val pinOneSuccessAnimation: SpringAnimation
@@ -65,7 +65,7 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
 
     var failAnimationEnabled = true
     var successAnimationEnabled = true
-    var onPinCodeEnterListener: OnPinCodeEnterListener? = null
+    private var onPinCodeEnterListener: OnPinCodeEnterListener? = null
 
     init {
         LayoutInflater.from(context).inflate(LAYOUT, this)
@@ -85,8 +85,8 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
         pinTwo = rootView.findViewById(R.id.iv_pin_2)
         pinThree = rootView.findViewById(R.id.iv_pin_3)
         pinFour = rootView.findViewById(R.id.iv_pin_4)
-        clearButton = rootView.findViewById(R.id.ib_clear)
-        clearButton.visibility = View.INVISIBLE
+        cleanButton = rootView.findViewById(R.id.ib_clean)
+        cleanButton.visibility = View.INVISIBLE
 
         pintList = listOf(
             pinOne,
@@ -107,8 +107,6 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
             numberEight,
             numberNine
         )
-
-
 
         failAnimation = SpringAnimation(pins, DynamicAnimation.TRANSLATION_X, PIN_FINAL_POSITION)
         pinOneSuccessAnimation =
@@ -143,10 +141,10 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
                 getColorFromAttr(android.R.attr.colorPrimary)
             )
             val buttonBackground = ta.getDrawable(R.styleable.PinCodeView_PCV_buttonBackground)
-            val clearSrc = ta.getDrawable(R.styleable.PinCodeView_PCV_clearSrc)
-            val clearBackground = ta.getDrawable(R.styleable.PinCodeView_PCV_clearBackground)
-            val clearBackgroundTint = ta.getColor(
-                R.styleable.PinCodeView_PCV_clearTint,
+            val cleanSrc = ta.getDrawable(R.styleable.PinCodeView_PCV_cleanSrc)
+            val cleanBackground = ta.getDrawable(R.styleable.PinCodeView_PCV_cleanBackground)
+            val cleanBackgroundTint = ta.getColor(
+                R.styleable.PinCodeView_PCV_cleanTint,
                 getColorFromAttr(android.R.attr.colorPrimary)
             )
             ta.recycle()
@@ -154,12 +152,20 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
             setButtonTextColor(buttonTextColor)
             setButtonBackground(buttonBackground)
             setButtonBackgroundTintColor(buttonTintColor)
-            setClearTintColor(clearBackgroundTint)
-            setClearBackground(clearBackground)
-            setClearSrc(clearSrc)
+            setCleanButtonTintColor(cleanBackgroundTint)
+            setCleanButtonBackground(cleanBackground)
+            setCleanButtonSrc(cleanSrc)
             setPinsSrc(pinSrc)
             setPinsTint(pinTint)
         }
+    }
+
+    fun addOnPinCodeEnterListener(listener: OnPinCodeEnterListener) {
+        onPinCodeEnterListener = listener
+    }
+
+    fun removeOnPinCodeEnterListener() {
+        onPinCodeEnterListener = null
     }
 
     fun setPinsTint(@ColorInt color: Int) {
@@ -181,20 +187,20 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
         }
     }
 
-    fun setClearSrc(drawable: Drawable?) {
+    fun setCleanButtonSrc(drawable: Drawable?) {
         drawable?.let {
-            clearButton.setImageDrawable(it)
+            cleanButton.setImageDrawable(it)
         }
     }
 
-    fun setClearBackground(drawable: Drawable?) {
+    fun setCleanButtonBackground(drawable: Drawable?) {
         drawable?.let {
-            clearButton.background = it
+            cleanButton.background = it
         }
     }
 
-    fun setClearTintColor(@ColorInt color: Int) {
-        clearButton.backgroundTintList = ColorStateList.valueOf(color)
+    fun setCleanButtonTintColor(@ColorInt color: Int) {
+        cleanButton.backgroundTintList = ColorStateList.valueOf(color)
     }
 
     fun setButtonTextColor(@ColorInt color: Int) {
@@ -217,15 +223,14 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
         }
     }
 
-
     private fun initButtons() {
         for (i in numberList.indices) {
             numberList[i].tag = i
             numberList[i].setOnClickListener(this)
         }
 
-        clearButton.setOnClickListener {
-            clear()
+        cleanButton.setOnClickListener {
+            clean()
         }
     }
 
@@ -235,12 +240,12 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
                 setStartValue(X_VALUE)
                 spring.stiffness = STIFFNESS
                 addEndListener { _, _, _, _ ->
-                    clear()
+                    clean()
                 }
                 start()
             }
         } else {
-            clear()
+            clean()
         }
     }
 
@@ -268,32 +273,32 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
                 setStartValue(Y_VALUE)
                 spring.stiffness = STIFFNESS
                 addEndListener { _, _, _, _ ->
-                    clear()
+                    clean()
                 }
             }
 
             pinOneSuccessAnimation.start()
         } else {
-            clear()
+            clean()
         }
     }
 
-    private fun clear() {
-        clearButton.visibility = View.INVISIBLE
+    private fun clean() {
+        cleanButton.visibility = View.INVISIBLE
         pinOne.isActivated = false
         pinTwo.isActivated = false
         pinThree.isActivated = false
         pinFour.isActivated = false
-        iPinStore.clear()
+        iPinStore.clean()
     }
 
     fun onFail() {
-        clearButton.visibility = View.INVISIBLE
+        cleanButton.visibility = View.INVISIBLE
         failAnimation()
     }
 
     fun onSuccess() {
-        clearButton.visibility = View.INVISIBLE
+        cleanButton.visibility = View.INVISIBLE
         successAnimation()
     }
 
@@ -305,7 +310,7 @@ class PinCodeView(context: Context, attrs: AttributeSet?) : RelativeLayout(conte
         when (pinNumber) {
             0 -> {
                 pinOne.isActivated = true
-                clearButton.visibility = View.VISIBLE
+                cleanButton.visibility = View.VISIBLE
             }
             1 -> pinTwo.isActivated = true
             2 -> pinThree.isActivated = true

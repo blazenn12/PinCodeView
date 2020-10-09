@@ -32,7 +32,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/ib_clear"
+        android:id="@+id/ib_clean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/b_3"

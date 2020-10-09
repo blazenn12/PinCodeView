@@ -4,15 +4,15 @@
         <attr name="PCV_buttonBackground" format="reference" />
         <attr name="PCV_buttonTextColor" format="color" />
         <attr name="PCV_buttonTintColor" format="color" />
-        <attr name="PCV_clearSrc" format="reference" />
-        <attr name="PCV_clearBackground" format="reference|color" />
-        <attr name="PCV_clearTint" format="color" />
+        <attr name="PCV_cleanSrc" format="reference" />
+        <attr name="PCV_cleanBackground" format="reference|color" />
+        <attr name="PCV_cleanTint" format="color" />
 
         <attr name="PCV_pinsSrc" format="reference" />
         <attr name="PCV_pinColor" format="color" />
 
         <!--
-            Animation on successful event.
+            Animation on a successful event.
             Default: enabled
          -->
         <attr name="PCV_enableSuccessAnimation" format="boolean" />
