@@ -9,7 +9,7 @@ internal interface IPinStore {
         fun onPinAdd(pinNumber: Int)
     }
 
-    fun add(int: Int)
+    fun add(value: Int)
 
     fun clean()
 }

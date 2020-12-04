@@ -14,12 +14,12 @@ internal class PinStore(private val callback: IPinStore.Callback?) : IPinStore {
     private var pinArray: Array<Int> = Array(PIN_ARRAY_SIZE) { UNREACHABLE }
     private var cursor: Int = CURSOR_START_VALUE
 
-    override fun add(pin: Int) {
-        require(pin in MIN_VALUE..MAX_VALUE) {
-            throw IllegalArgumentException("Pin $pin must be in range $MIN_VALUE to $MAX_VALUE")
+    override fun add(value: Int) {
+        require(value in MIN_VALUE..MAX_VALUE) {
+            throw IllegalArgumentException("Pin $value must be in range $MIN_VALUE to $MAX_VALUE")
         }
         if (cursor in CURSOR_START_VALUE..CURSOR_MAX_VALUE) {
-            pinArray[cursor] = pin
+            pinArray[cursor] = value
             callback?.onPinAdd(cursor)
 
             if (cursor == CURSOR_MAX_VALUE) {
